@@ -1,0 +1,79 @@
+---
+import Lock from './icons/lock.astro';
+import Awards from './icons/awards.astro';
+import CheckCircle from './icons/checkCircle.astro';
+---
+
+<section class="border-4 flex w-auto flex-col gap-10 border-blue-800 bg-transparent pb-10">
+  <div class="flex flex-col items-center justify-center bg-blue-800 py-3">
+    <h2 class="text-center text-[1.4rem] uppercase tracking-wider text-white">Verification Standards</h2>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 border-2 border-slate-300 bg-white p-10 md:grid-cols-3 mx-10">
+    <div class="border-2 border-slate-300 bg-white p-5">
+    <Lock/>
+      <h3 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Phase 1: Background Verification</h3>
+      <ul class="leading-6 text-slate-500">
+        <li>Comprehensive criminal background check</li>
+        <li>Financial responsibility verification</li>
+        <li>Professional reference validation</li>
+        <li>Education credential confirmation</li>
+      </ul>
+    </div>
+
+    <div class="border-2 border-slate-300 bg-white p-5">
+      <Awards/>
+      <h3 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Phase 2: Competency Testing</h3>
+      <ul class="leading-6 text-slate-500">
+        <li>Insurance law and regulation exam</li>
+        <li>Product knowledge assessment</li>
+        <li>Ethics and professional conduct test</li>
+        <li>Customer service evaluation</li>
+      </ul>
+    </div>
+
+    <div class="border-2 border-slate-300 bg-white p-5">
+      <CheckCircle/>
+      <h3 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Phase 3: Ongoing Compliance</h3>
+      <ul class="leading-6 text-slate-500">
+        <li>Annual performance review</li>
+        <li>Continuing education requirements</li>
+        <li>Client feedback monitoring</li>
+        <li>Professional development tracking</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NEED TO BE A COMPONENT -->
+  <div class="border-4 border-slate-400 bg-white p-8 mx-10">
+    <div class="mb-4 text-center">
+      <h3 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Verification Guarantee</h3>
+      <p class="leading-7 text-slate-900">
+        <strong class="text-xs uppercase tracking-widest"
+          >"Every NFIA-verified agent has met or exceeded our rigorous standards for professional competency, ethical
+          conduct, and consumer protection."</strong
+        >
+      </p>
+    </div>
+    <div class="grid grid-cols-1 gap-5 border-t-2 border-slate-300 pt-5 md:grid-cols-2">
+      <div>
+        <h4 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Verification Includes:</h4>
+        <ul class="leading-6 text-slate-500">
+          <li>Federal background clearance</li>
+          <li>Professional competency certification</li>
+          <li>Ethical standards compliance</li>
+          <li>Consumer protection training</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-2 text-[1.125rem] uppercase tracking-wider text-black">Ongoing Monitoring:</h4>
+        <ul class="leading-6 text-slate-500">
+          <li>Annual performance review</li>
+          <li>Client satisfaction tracking</li>
+          <li>Continuing education verification</li>
+          <li>Professional conduct monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

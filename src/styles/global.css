@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -105,21 +104,11 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  overflow-x:hidden;
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
+  overflow-x: hidden;
 }
 
 #banner-image {
-  mask-image: linear-gradient(black 80%, transparent)
+  mask-image: linear-gradient(black 80%, transparent);
 }
 
 .logo {
@@ -178,14 +167,20 @@ html {
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-foreground text-foreground;
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-normal text-background;
+}

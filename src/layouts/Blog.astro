@@ -1,0 +1,22 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  shortDescription: string;
+  publishedAt: string;
+  mainImage: string;
+}
+
+const { title, shortDescription } = Astro.props;
+---
+
+<Layout meta_title={title} description={shortDescription}>
+  <article
+    class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-2xl px-5 py-5 md:py-20"
+  >
+    <div class="prose-md prose prose-green mx-auto w-full min-w-full md:prose-lg">
+      <slot />
+    </div>
+  </article>
+</Layout>

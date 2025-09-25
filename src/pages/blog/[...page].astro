@@ -1,0 +1,31 @@
+---
+import { getBlogs, getFeaturedBlog } from '@utils/sanity';
+import Layout from '@layouts/Layout.astro';
+
+export interface Props {
+  page: {
+    data: {
+      blogs: any;
+      featuredBlog: any;
+    };
+    url: string;
+  };
+}
+
+export async function getStaticPaths() {
+  const blogs = await getBlogs();
+  const featuredBlog = await getFeaturedBlog();
+
+  return blogs.map((blog: any) => ({
+    params: { slug: blog.slug },
+    url: `/blog/${blog.slug}`,
+    props: { page: { data: { blogs, featuredBlog } } },
+  }));
+}
+
+const { blogs, featuredBlog } = Astro.props.page.data;
+---
+
+<Layout title="Blog | National Federation of Insurance Agents">
+  <!-- Here the blog post -->
+</Layout>
