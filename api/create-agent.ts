@@ -1,4 +1,4 @@
-import sanityClient from '../src/utils/sanityClient.ts';
+import sanityClient from '../lib/sanityClient.ts';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
