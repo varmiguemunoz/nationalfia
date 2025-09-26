@@ -7,7 +7,7 @@ import { schema } from './src/sanity/schema';
 export default defineConfig({
   name: 'national-fia',
   title: 'National Federation of Insurance Agents',
-  basePath: '/admin',
+  basePath: '/studio',
   projectId: '5cd2hsgo',
   dataset: 'production',
   cdn: true,

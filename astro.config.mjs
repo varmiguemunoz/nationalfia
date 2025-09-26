@@ -7,6 +7,7 @@ import robotsTxt from 'astro-robots-txt';
 
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
+import sanity from '@sanity/astro';
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +29,12 @@ export default defineConfig({
     },
   },
   integrations: [
+    sanity({
+      projectId: '5cd2hsgo',
+      dataset: 'production',
+      useCdn: true,
+      studioBasePath: '/studio',
+    }),
     mdx({
       syntaxHighlight: 'shiki',
       shikiConfig: {
