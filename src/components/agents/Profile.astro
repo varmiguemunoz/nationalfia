@@ -1,4 +1,7 @@
-<!-- ================= AGENT PROFILE ================= -->
+---
+const { headshot, fullname, license, npn, scheduleurl } = Astro.props;
+---
+
 <section class="mt-8 w-full border-2 border-slate-300 bg-white">
   <div class="border-b-2 border-slate-300 bg-slate-100 p-4 text-[1.05rem] uppercase tracking-wider text-slate-900">
     Agent Profile
@@ -6,7 +9,7 @@
   <div class="p-5">
     <div class="flex flex-col items-start gap-4 lg:flex-row lg:gap-8">
       <div class="relative shrink-0">
-        <img src="[acf field=head_shot]" alt="Agent Headshot" class="h-[260px] w-[190px] object-cover" />
+        <img src={headshot} alt="Agent Headshot" class="h-[260px] w-[190px] object-cover" />
         <div class="absolute left-2 top-2 flex h-12 w-12 items-center justify-center overflow-hidden">
           <img
             src="https://nationalfia.org/wp-content/uploads/2024/07/NFIA-LOGO-COLOR.png"
@@ -19,24 +22,24 @@
         </div>
       </div>
       <div class="flex-1">
-        <h2 class="mb-1 text-[1.7rem] uppercase tracking-wider text-slate-900">[acf field="name"]</h2>
+        <h2 class="mb-1 text-[1.7rem] uppercase tracking-wider text-slate-900">{fullname}</h2>
         <p class="mb-4 uppercase text-slate-700">Certified Insurance Professional</p>
 
         <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
           <div class="border border-slate-300 bg-slate-50 p-4">
             <p class="mb-1 text-xs uppercase text-slate-700">Official NFIA Membership Number</p>
-            <p class="text-lg text-slate-900">[acf field="license_number"]</p>
+            <p class="text-lg text-slate-900">{license}</p>
           </div>
           <div class="border border-slate-300 bg-slate-50 p-4">
             <p class="mb-1 text-xs uppercase text-slate-700">NPN License Number</p>
-            <p class="text-lg text-slate-900">[acf field="npn"] ✔</p>
+            <p class="text-lg text-slate-900">{npn} ✔</p>
           </div>
         </div>
 
         <div class="mt-4">
           <a
             class="inline-flex items-center gap-2 border-2 border-blue-700 bg-blue-700 px-4 py-2 text-sm uppercase tracking-wide text-white"
-            href="[acf field=schedule_url]"
+            href={scheduleurl}
             title="Schedule a Call"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"

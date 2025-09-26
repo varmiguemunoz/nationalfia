@@ -1,10 +1,23 @@
-<!-- ================= STATE LICENSING ================= -->
+---
+const { license_states } = Astro.props;
+
+const states = license_states.split(',');
+---
+
 <section class="mt-8 w-full border-2 border-slate-300 bg-white">
   <div class="border-b-2 border-slate-300 bg-slate-100 p-4 text-[1.05rem] uppercase tracking-wider text-slate-900">
     State Licensing Information
   </div>
   <div class="p-5">
     <p class="mb-4 text-[0.8rem] uppercase text-slate-600">Licensed in the following states:</p>
-    <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">[agent_states_render]</div>
+    <div class="flex flex-wrap gap-2">
+      {
+        states.map((state: string) => (
+          <div class="flex items-center gap-2">
+            <div class="inline border border-slate-300 px-2 py-2 text-black">{state}</div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>

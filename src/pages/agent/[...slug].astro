@@ -9,6 +9,8 @@ import Contact from '@components/agents/Contact.astro';
 import { getAllAgents, getAgent } from '@utils/sanity';
 import type { InferGetStaticParamsType } from 'astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const agents = await getAllAgents();
 
@@ -26,11 +28,11 @@ const agent = await getAgent(slug);
 
 <Layout title="Agent | National Federation of Insurance Agents">
   <div class="container mx-auto w-full max-w-7xl">
-    <Profile />
-    <State />
+    <Profile {...agent} />
+    <State {...agent} />
     <Recognition />
-    <Biography />
+    <Biography {...agent} />
     <Verification />
-    <Contact />
+    <Contact {...agent} />
   </div>
 </Layout>

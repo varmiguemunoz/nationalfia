@@ -1,3 +1,8 @@
+---
+import { PortableText } from '@portabletext/react';
+const { bio } = Astro.props;
+---
+
 <section class="mt-8 w-full border-2 border-slate-300 bg-white" aria-labelledby="bio-heading">
   <div
     class="border-b-2 border-slate-300 bg-slate-100 p-4 text-[1.05rem] uppercase tracking-wider text-slate-900"
@@ -7,7 +12,7 @@
   </div>
   <div class="p-5">
     <div class="text-[0.95rem] leading-[1.55] text-slate-700">
-      <p>[acf field="bio"]</p>
+      <PortableText value={bio} />
     </div>
   </div>
 </section>

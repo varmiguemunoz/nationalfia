@@ -1,3 +1,7 @@
+---
+const { scheduleurl } = Astro.props;
+---
+
 <section class="mb-8 mt-8 w-full border-4 border-slate-900 bg-slate-900 text-white" aria-labelledby="contact-heading">
   <div class="bg-[#0b1220] p-4 text-center uppercase tracking-wider" id="contact-heading">Contact Information</div>
   <div class="p-5 text-center">
@@ -10,7 +14,7 @@
     <div class="mb-4 flex w-full items-center justify-center">
       <a
         class="nfia-btn inline-flex items-center gap-2 border-2 border-blue-700 bg-blue-700 px-4 py-2 text-sm uppercase tracking-wide text-white"
-        href="[acf field=schedule_url]"
+        href={scheduleurl}
         title="Schedule a Call"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"

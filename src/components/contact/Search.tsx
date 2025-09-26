@@ -4,11 +4,14 @@ import { useForm } from 'react-hook-form';
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { searchAgents } from '@/utils/sanity';
+import { navigate } from 'astro:transitions/client';
+import { Button } from '../ui/button';
 
 const contactSchema = z.object({
-  lastName: z.string().optional(),
-  npn: z.string().optional(),
-  license: z.string().optional(),
+  lastName: z.string().optional().nullable(),
+  npn: z.string().optional().nullable(),
+  license: z.string().optional().nullable(),
 });
 
 type ContactSchema = z.infer<typeof contactSchema>;
@@ -17,15 +20,24 @@ export default function Search() {
   const form = useForm<ContactSchema>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      npn: '',
-      license: '',
-      lastName: '',
+      npn: null,
+      license: null,
+      lastName: null,
     },
   });
 
-  function onSubmit(values: ContactSchema) {
-    // Replace with your submission logic
-    console.log('contact-submit', values);
+  async function onSubmit(values: ContactSchema) {
+    const results = await searchAgents({
+      lastName: values.lastName || null,
+      npn: values.npn || null,
+      license: values.license || null,
+    });
+
+    if (results.length > 0) {
+      navigate(`/agent/${results[0].slug}`);
+    } else {
+      alert('No results found');
+    }
   }
 
   return (
@@ -39,7 +51,7 @@ export default function Search() {
               <FormItem>
                 <FormLabel className="text-black">Last Name</FormLabel>
                 <FormControl>
-                  <Input className="text-black" placeholder="agent lastname here" {...field} />
+                  <Input className="text-black" placeholder="agent lastname here" {...field} value={field.value || ''} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -53,7 +65,7 @@ export default function Search() {
                 <FormItem>
                   <FormLabel className="text-black">License number</FormLabel>
                   <FormControl>
-                    <Input className="text-black" placeholder="1123763" {...field} />
+                    <Input className="text-black" placeholder="1123763" {...field} value={field.value || ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -66,13 +78,17 @@ export default function Search() {
                 <FormItem>
                   <FormLabel className="text-black">NPN number</FormLabel>
                   <FormControl>
-                    <Input className="text-black" placeholder="1123763" {...field} />
+                    <Input className="text-black" placeholder="1123763" {...field} value={field.value || ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
+
+          <Button type="submit" className="bg-black text-white hover:bg-black/90">
+            Search
+          </Button>
         </form>
       </Form>
     </div>

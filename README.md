@@ -44,3 +44,29 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+```
+{
+  _id: '1b761ee2-f2d2-4159-975d-3660bc2dc4d8',
+  alt: 'Miguel',
+  bio: [
+    {
+      _key: '840f41dddbb5',
+      _type: 'block',
+      children: [Array],
+      markDefs: [],
+      style: 'normal'
+    }
+  ],
+  email: 'varmiguemunoz@gmail.com',
+  fullname: 'Miguel Angel Jaramillo Munoz',
+  headshot: 'https://cdn.sanity.io/images/5cd2hsgo/production/1c2741065ffbc16afbedfb992ca8714855da758b-2756x4160.jpg',
+  license: '105186487',
+  license_states: 'antioquia,medellin,colombia,bogota',
+  npn: '18945627',
+  phone: '3023278057',
+  publishedAt: '2025-09-26T17:37:00.000Z',
+  scheduleurl: 'https://www.taxfreewealthplan.com',
+  slug: 'miguel-angel-jaramillo-munoz'
+}
+```

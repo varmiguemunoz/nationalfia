@@ -121,4 +121,42 @@ async function getAllAgents() {
   }
 }
 
-export { getBlogs, getBlog, getFeaturedBlog, getAgent, getAllAgents };
+async function searchAgents({
+  lastName,
+  npn,
+  license,
+}: {
+  lastName?: string | null;
+  npn?: string | null;
+  license?: string | null;
+}) {
+  const query = groq`
+    *[_type == "agent" 
+      && ($lastName == null || fullname match $lastName)
+      && ($npn == null || npn == $npn)
+      && ($license == null || license == $license)
+    ] {
+      _id,
+      "slug": slug.current,
+      fullname,
+      email,
+      phone,
+      license,
+      npn,
+      license_states,
+      "headshot": headshot.asset->url,
+      "alt": headshot.alt,
+      scheduleurl,
+      publishedAt,
+      bio
+    }
+  `;
+
+  return sanityClient.fetch(query, {
+    lastName: lastName ? `*${lastName}*` : null,
+    npn: npn ?? null,
+    license: license ?? null,
+  });
+}
+
+export { getBlogs, getBlog, getFeaturedBlog, getAgent, getAllAgents, searchAgents };
