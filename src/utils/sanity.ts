@@ -69,4 +69,56 @@ async function getBlog(slug: string) {
   }
 }
 
-export { getBlogs, getBlog, getFeaturedBlog };
+async function getAgent(slug: string) {
+  try {
+    const query = groq`
+      *[_type == "agent" && slug.current == $slug][0] {
+        _id,
+        "slug": slug.current,
+        fullname,
+        scheduleurl,
+        email,
+        phone,
+        license,
+        npn,
+        license_states,
+        bio,
+        publishedAt,
+        "alt": headshot.alt,
+        "headshot": headshot.asset->url
+      }
+    `;
+    return await sanityClient.fetch(query, { slug });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+async function getAllAgents() {
+  try {
+    const query = groq`
+      *[_type == "agent"] | order(fullname asc) {
+        _id,
+        "slug": slug.current,
+        fullname,
+        scheduleurl,
+        email,
+        phone,
+        license,
+        npn,
+        license_states,
+        bio,
+        publishedAt,
+        "alt": headshot.alt,
+        "headshot": headshot.asset->url
+      }
+    `;
+    return await sanityClient.fetch(query);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export { getBlogs, getBlog, getFeaturedBlog, getAgent, getAllAgents };

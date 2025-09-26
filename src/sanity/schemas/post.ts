@@ -7,16 +7,15 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Titulo',
+      title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required().min(10).max(100).error('El titulo es demasiado largo o demasiado corto'),
+      validation: (rule) => rule.required().min(10).max(100).error('The title is too long or too short'),
     }),
     defineField({
       name: 'description',
-      title: 'Descripción Corta',
+      title: 'Short Description',
       type: 'string',
-      validation: (rule) =>
-        rule.required().min(10).max(100).error('La descripción es demasiado larga o demasiado corta'),
+      validation: (rule) => rule.required().min(10).max(100).error('The description is too long or too short'),
     }),
     defineField({
       name: 'slug',
@@ -37,7 +36,7 @@ export default defineType({
     }),
     defineField({
       name: 'author',
-      title: 'Autor',
+      title: 'Author',
       type: 'reference',
       to: { type: 'author' },
     }),
@@ -45,7 +44,7 @@ export default defineType({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
-      validation: (rule) => rule.required().error('Debes proveer una imagen'),
+      validation: (rule) => rule.required().error('You must provide an image'),
       options: {
         hotspot: true,
       },
@@ -59,13 +58,13 @@ export default defineType({
     }),
     defineField({
       name: 'category',
-      title: 'Categoria',
+      title: 'Category',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'categories' } }],
     }),
     defineField({
       name: 'publishedAt',
-      title: 'Publicado en',
+      title: 'Published At',
       type: 'datetime',
       validation: (rule) => rule.required(),
     }),
@@ -80,7 +79,7 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'autor.name',
+      author: 'author.name',
       media: 'mainImage',
     },
     prepare(selection) {

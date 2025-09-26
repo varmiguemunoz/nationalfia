@@ -2,15 +2,15 @@ import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'featuredsection',
-  title: 'Sección Destacada',
+  title: 'Featured Section',
   type: 'document',
   fields: [
     defineField({
       name: 'featuredpost',
-      title: 'Blog Destacado',
+      title: 'Featured Post',
       type: 'reference',
       to: { type: 'post' },
-      description: 'Selecciona un post para mostrar como destacado',
+      description: 'Select a post to show as featured',
     }),
   ],
 });
