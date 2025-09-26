@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import About from '../components/About.astro';
 import Verification from '../components/Verification.astro';
@@ -10,8 +8,7 @@ import Directory from '../components/Directory.astro';
 import Contact from '../components/Contact.astro';
 ---
 
-<Layout>
-  <Navbar />
+<Layout title="National Federation of Insurance Agents">
   <Header />
   <div class="my-10 flex w-full max-w-6xl flex-col items-center justify-center gap-10">
     <About />
@@ -20,5 +17,4 @@ import Contact from '../components/Contact.astro';
     <Directory />
   </div>
   <Contact />
-  <Footer />
 </Layout>

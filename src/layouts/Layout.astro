@@ -1,6 +1,8 @@
 ---
 import config from '../config/config.json';
 import { ViewTransitions } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   title?: string;
@@ -57,8 +59,10 @@ import '@styles/global.css';
     <ViewTransitions />
   </head>
   <body>
-    <main class="flex w-full flex-col items-center justify-center">
+    <Navbar />
+    <main class="flex w-full flex-col items-center justify-center bg-slate-100">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
