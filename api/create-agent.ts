@@ -1,5 +1,14 @@
-import sanityClient from '../lib/sanityClient.ts';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+import { createClient } from '@sanity/client';
+
+const sanityClient = createClient({
+  projectId: '5cd2hsgo',
+  dataset: 'production',
+  apiVersion: '2024-09-18',
+  token: process.env.SANITY_API_TOKEN,
+  useCdn: true,
+});
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
