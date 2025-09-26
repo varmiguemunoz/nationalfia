@@ -4,6 +4,9 @@ module.exports = {
   darkMode: ['class'],
   prefix: '',
   theme: {
+    fontFamily: {
+      sans: ['National', 'sans-serif'],
+    },
     container: {
       center: true,
       padding: '2rem',
