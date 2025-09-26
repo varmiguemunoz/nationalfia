@@ -6,12 +6,12 @@ import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 import sanity from '@sanity/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.growthlyfast.com/',
+  site: 'https://www.nationalfia.org/',
   output: 'server',
   adapter: vercel(),
   image: {

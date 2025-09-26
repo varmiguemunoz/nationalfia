@@ -189,6 +189,14 @@ html {
     font-style: normal;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: "National";
+    src: url("/fonts/national-v3.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 h1,
