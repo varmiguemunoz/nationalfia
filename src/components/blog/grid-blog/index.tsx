@@ -107,7 +107,7 @@ export default function GridBlog({ getCategoryLabel, selectedCategory, filteredP
   const postsCount = useMemo(() => memoizedPosts.length, [memoizedPosts]);
 
   return (
-    <section className="h-[600px] w-full overflow-hidden">
+    <section className="h-auto w-full overflow-hidden">
       <div className="mb-8 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-foreground md:text-3xl">
           {selectedCategory === 'all' ? 'Latest Articles' : `${getCategoryLabel(selectedCategory)} Articles`}

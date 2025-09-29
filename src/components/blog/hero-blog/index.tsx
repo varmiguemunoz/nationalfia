@@ -1,5 +1,6 @@
 import { Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 type Props = {
   showFilters: boolean;
@@ -11,31 +12,35 @@ type Props = {
 };
 
 export default function HeroBlog({ showFilters, selectedCategory, categories }: Props) {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
-    <section className="px-4 pb-16 pt-24">
+    <section className="px-4 pt-10 md:pb-16 md:pt-24">
       <div className="mx-auto w-full max-w-6xl text-center">
         <div className="relative">
-          {/* Background glow effect */}
-          <div className="absolute inset-0 w-full rounded-full bg-transparent opacity-10 blur-3xl md:scale-150"></div>
-
           <div className="relative">
             <h1 className="mb-6 text-4xl font-bold leading-tight text-black md:text-6xl lg:text-7xl">
               Insurance Standards{' '}
               <span className="bg-gradient-primary bg-clip-text text-gray-800"> & Client Growth Strategies</span>
             </h1>
 
-            <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+            <p className="mx-auto max-w-4xl text-xl leading-relaxed text-muted-foreground md:mb-8 md:text-2xl">
               Professional ethics, sales strategies, and IUL market insights for today’s insurance leaders.
             </p>
 
             {/* Category Filter */}
             <div className="mb-8 flex flex-wrap justify-center gap-3">
-              <Button variant="ghost" size="sm" className="md:hidden">
+              <Button
+                variant="default"
+                size="sm"
+                className="mt-4 bg-gray-800 text-white hover:bg-gray-700 md:hidden"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+              >
                 <Filter className="mr-2 h-4 w-4" />
                 Filter
               </Button>
 
-              <div className={`flex flex-wrap justify-center gap-3 ${showFilters ? 'block' : 'hidden md:flex'}`}>
+              <div className={`flex flex-wrap justify-center gap-3 ${isFilterOpen ? 'block' : 'hidden md:flex'}`}>
                 {categories.map((category) => (
                   <a href={`/blog?category=${category.id}`}>
                     <Button
