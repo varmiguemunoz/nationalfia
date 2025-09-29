@@ -6,6 +6,7 @@ async function getFeaturedBlog() {
     featuredpost-> {
      _id,
       title,
+      description,
       publishedAt,
       author -> {
         name,
@@ -23,14 +24,15 @@ async function getFeaturedBlog() {
 
 async function getBlogs() {
   try {
-    return await sanityClient.fetch(groq`*[_type == "post"] {
+    return await sanityClient.fetch(groq`*[_type == "post"] | order(publishedAt desc) {
+  _id,
+  title,
+  description,
   "slug": slug.current,
-    title,
-    description,
-    _id,
-    publishedAt,
-    "alt": mainImage.alt,
-    "mainImage": mainImage.asset->url
+  publishedAt,
+  "alt": mainImage.alt,
+  "mainImage": mainImage.asset->url,
+  "categories": category[]-> { _id, title }
 }`);
   } catch (error) {
     console.log(error);
@@ -53,6 +55,7 @@ async function getBlog(slug: string) {
         "authorImage": image.asset -> url
       },
     body,
+    category[]-> { _id, title },
     description,
     publishedAt,
     "alt": mainImage.alt,
@@ -160,3 +163,40 @@ async function searchAgents({
 }
 
 export { getBlogs, getBlog, getFeaturedBlog, getAgent, getAllAgents, searchAgents };
+
+// New: fetch all categories
+async function getCategories() {
+  try {
+    const query = groq`*[_type == "categories"] | order(title asc) {
+      _id,
+      title,
+      description
+    }`;
+    return await sanityClient.fetch(query);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+// New: fetch blogs by specific category (by category document _id)
+async function getBlogsByCategory(categoryId: string) {
+  try {
+    const query = groq`*[_type == "post" && $categoryId in category[]._ref] | order(publishedAt desc) {
+      _id,
+      title,
+      description,
+      "slug": slug.current,
+      publishedAt,
+      "alt": mainImage.alt,
+      "mainImage": mainImage.asset->url,
+      "categories": category[]-> { _id, title }
+    }`;
+    return await sanityClient.fetch(query, { categoryId });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export { getCategories, getBlogsByCategory };

@@ -15,7 +15,7 @@ export default defineType({
       name: 'description',
       title: 'Short Description',
       type: 'string',
-      validation: (rule) => rule.required().min(10).max(100).error('The description is too long or too short'),
+      validation: (rule) => rule.required().min(10).max(300).error('The description is too long or too short'),
     }),
     defineField({
       name: 'slug',

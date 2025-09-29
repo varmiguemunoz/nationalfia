@@ -1,7 +1,7 @@
 export const createOgImage = ({ title, meta }: { title: string; meta: string }) =>
   [
     // Base
-    `https://res.cloudinary.com/dy7kvvzgj/image/upload`,
+    `https://res.cloudinary.com/dwqfsvaej/image/upload`,
     // Tamaño general del output
     `w_1600,h_836,q_100`,
 

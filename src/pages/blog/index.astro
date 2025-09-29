@@ -1,0 +1,20 @@
+---
+import { getBlogs, getFeaturedBlog, getCategories, getBlogsByCategory } from '@utils/sanity';
+import Layout from '@layouts/Layout.astro';
+import Provider from '@components/blog/provider';
+import Contact from '@components/Contact.astro';
+
+const url = new URL(Astro.request.url);
+const selectedCategory = url.searchParams.get('category');
+
+const categories = await getCategories();
+const featuredBlog = await getFeaturedBlog();
+const blogs =
+  selectedCategory && selectedCategory !== 'all' ? await getBlogsByCategory(selectedCategory) : await getBlogs();
+---
+
+<Layout title="Blog | National Federation of Insurance Agents">
+  <!-- Here the blog post -->
+  <Provider client:load allPosts={blogs} featuredPost={featuredBlog} categories={categories} />
+  <Contact />
+</Layout>

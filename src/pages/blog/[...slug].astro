@@ -1,30 +1,70 @@
 ---
-import type { InferGetStaticParamsType } from 'astro';
-import { getBlog, getBlogs } from '@utils/sanity';
-import { PortableText } from 'astro-portabletext';
+import NavigationBlog from '@/components/blog/navigation-blog';
+import Base from '@/layouts/Layout.astro';
+import Contact from '@components/Contact.astro';
+import { getBlogs, getBlog } from '@utils/sanity';
+import PortableRenderer from '@/components/blog/portable-renderer';
+import type { GetStaticPaths } from 'astro';
+import HeroPostBlog from '@/components/blog/hero-post-blog/index.astro';
 
-import { Mark } from 'astro-portabletext/components';
-import Blog from '@layouts/Blog.astro';
-
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getBlogs();
-
-  return posts.map((item: any) => ({
-    params: { slug: item.slug },
-    props: item,
-  }));
-}
-
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
-const { slug } = Astro.params as Params;
-
-const blog = await getBlog(slug);
-
-const component = {
-  mark: Mark,
+  return posts.filter((p: any) => p && p.slug).map((p: any) => ({ params: { slug: p.slug } }));
 };
+
+const slugParam = Astro.params.slug as string | string[] | undefined;
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
+const post = await getBlog(slug);
+
+// Compute neighbors from ordered list (desc by publishedAt)
+const allPosts = await getBlogs();
+const index = allPosts.findIndex((p: any) => p?.slug === slug);
+const previous = index >= 0 ? allPosts[index + 1] : null;
+const next = index > 0 ? allPosts[index - 1] : null;
+const previousPost = previous ? { slug: previous.slug, data: { title: previous.title } } : null;
+const nextPost = next ? { slug: next.slug, data: { title: next.title } } : null;
+
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });  
 ---
 
-<Blog title={blog.title} shortDescription={blog.description} publishedAt={blog.publishedAt} mainImage={blog.mainImage}>
-  <PortableText value={blog.body} components={component} />
-</Blog>
+<Base meta_title={`Insurance Standards & Client Growth Strategies | ${post?.title}`}>
+  <div class="mx-auto min-h-screen w-full max-w-5xl bg-transparent py-20">
+
+    <HeroPostBlog blogPost={post as any} formatDate={formatDate} />
+
+    {/* Cover Image */}
+    <section class="mb-12 px-4">
+      <div class="mx-auto max-w-5xl">
+        <div class="group relative overflow-hidden rounded-2xl">
+          <img
+            src={post?.mainImage}
+            alt={post?.title}
+            class="h-[400px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-[500px]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
+          <div
+            class="bg-gradient-primary/10 absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full px-4">
+      <article
+        class="prose prose-lg prose-invert mb-16 max-w-none rounded-2xl border border-border bg-gradient-card p-8 md:p-12"
+      >
+        <PortableRenderer body={post?.body} client:load />
+      </article>
+      <NavigationBlog previousPost={previousPost} nextPost={nextPost} />
+    </div>
+  </div>
+
+  <Contact />
+</Base>

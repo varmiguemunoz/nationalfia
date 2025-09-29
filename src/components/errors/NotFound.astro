@@ -1,0 +1,108 @@
+---
+// Presentational 404 component
+---
+
+<section class="relative w-full overflow-hidden bg-transparent">
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--)/0.12),transparent_55%)]"
+  >
+  </div>
+
+  <div class="container relative mx-auto flex min-h-[70vh] flex-col items-center justify-center py-16">
+    <div class="mb-10 text-center">
+      <span
+        class="inline-flex items-center rounded-full bg-secondary/60 px-3 py-1 text-xs uppercase tracking-widest text-secondary-foreground ring-1 ring-secondary/40"
+      >
+        Error 404
+      </span>
+      <h1 class="mt-6 text-5xl leading-tight text-background md:text-6xl">Page not found</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+        The page you’re looking for doesn’t exist or has been moved. Check the URL, go back, or explore our verified
+        resources.
+      </p>
+    </div>
+
+    <div class="relative w-full max-w-4xl">
+      <div class="rounded-xl bg-card/10 p-6">
+        <div class="flex flex-col items-center justify-center gap-6 md:flex-row md:items-start md:gap-8">
+          <div class="flex h-16 w-16 items-center justify-center rounded-lg bg-red-500/10 ring-1 ring-red-500/30">
+            <svg
+              class="h-8 w-8 text-red-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="13"></line>
+              <circle cx="12" cy="17" r="1"></circle>
+            </svg>
+          </div>
+
+          <div class="text-center md:text-left">
+            <h2 class="text-xl text-background">We couldn’t find that page</h2>
+            <p class="mt-2 text-sm text-black">Try one of the options below to continue your journey.</p>
+
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-start">
+              <a
+                href="/"
+                class="inline-flex items-center justify-center gap-2 rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-[transform,box-shadow] duration-300 ease-smooth hover:scale-[1.02] focus-visible:outline-none"
+              >
+                <svg
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12l9-9 9 9"></path>
+                  <path d="M9 21V9h6v12"></path>
+                </svg>
+                Go to homepage
+              </a>
+              <a
+                href="/search"
+                class="inline-flex items-center justify-center gap-2 rounded-md border border-border/70 bg-transparent px-4 py-2 text-sm font-medium text-background transition duration-300 ease-smooth hover:bg-secondary/60 hover:text-white"
+              >
+                <svg
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Search verified agents
+              </a>
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center gap-2 rounded-md border border-border/70 bg-transparent px-4 py-2 text-sm font-medium text-background transition duration-300 ease-smooth hover:bg-secondary/60 hover:text-white"
+              >
+                <svg
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 10a8.38 8.38 0 0 1-1.9 5.4l1.45 3.9-4-1.05A8.5 8.5 0 1 1 21 10z"></path>
+                </svg>
+                Contact support
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
