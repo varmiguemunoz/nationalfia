@@ -34,7 +34,6 @@ export default function ContactSplit() {
   });
 
   function onSubmit(values: ContactSchema) {
-    // Replace with your submission logic
     console.log('contact-submit', values);
   }
 
@@ -43,7 +42,7 @@ export default function ContactSplit() {
       <div className="flex flex-col items-center justify-center">
         <div className="p-6 sm:p-8">
           <div className="mb-6">
-            <h1 className="mb-2 text-4xl font-semibold tracking-[-0.02em] text-slate-900">
+            <h1 className="mb-2 text-2xl font-semibold tracking-[-0.02em] text-slate-900 md:text-4xl">
               Contact National Federation of Insurance Agents
             </h1>
           </div>

@@ -51,7 +51,12 @@ export default function Search() {
               <FormItem>
                 <FormLabel className="text-black">Last Name</FormLabel>
                 <FormControl>
-                  <Input className="text-black" placeholder="agent lastname here" {...field} value={field.value || ''} />
+                  <Input
+                    className="text-black"
+                    placeholder="Agent Lastname Here"
+                    {...field}
+                    value={field.value || ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
