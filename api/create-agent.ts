@@ -21,6 +21,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     filename: 'headshot.jpg',
   });
 
+  const countQuery = `count(*[_type == "agent"])`;
+  const count = await sanityClient.fetch(countQuery);
+  const referenceNumber = `NAFIV${String(count + 1).padStart(2, '0')}`;
+
   try {
     const { fullname, scheduleurl, email, phone, license, npn, license_states, bio, headshotUrl } = req.body;
 
@@ -40,7 +44,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       scheduleurl,
       email,
       phone,
-      license,
+      license: referenceNumber,
       npn,
       license_states,
       bio,
