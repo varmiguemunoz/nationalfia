@@ -10,7 +10,7 @@ export default defineConfig({
   basePath: '/studio',
   projectId: '5cd2hsgo',
   dataset: 'production',
-  cdn: true,
+  cdn: false,
   schema,
   plugins: [structureTool(), visionTool({ defaultApiVersion: '2024-09-18' })],
 });

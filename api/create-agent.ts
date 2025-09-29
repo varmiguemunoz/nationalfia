@@ -7,7 +7,7 @@ const sanityClient = createClient({
   dataset: 'production',
   apiVersion: '2024-09-18',
   token: process.env.SANITY_API_TOKEN,
-  useCdn: true,
+  useCdn: false,
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
