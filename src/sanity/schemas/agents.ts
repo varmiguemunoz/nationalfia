@@ -10,7 +10,7 @@ export default defineType({
       name: 'fullname',
       title: 'FullName',
       type: 'string',
-      validation: (rule) => rule.required().min(2).max(100).error('The full name is too long or too short'),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -99,8 +99,8 @@ export default defineType({
     defineField({
       name: 'bio',
       title: 'Bio',
-      validation: (rule) => rule.required(),
-      type: 'blockContent',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
