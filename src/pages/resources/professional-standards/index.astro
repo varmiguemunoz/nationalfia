@@ -1,7 +1,18 @@
 ---
-
+import Layout from '@layouts/Layout.astro';
+import Principles from '@/components/professional/Principles.astro';
+import TechnicalStandards from '@/components/professional/TechnicalStandards.astro';
+import BestPractices from '@/components/professional/BestPractices.astro';
+import Benefits from '@/components/professional/Benefits.astro';
+import Contact from '@/components/Contact.astro';
+import Header from '@/components/Header.astro';
 ---
 
-<div>
-  <h1>Professional Standards</h1>
-</div>
+<Layout title="Professional Standards & Ethics | NFIA">
+  <Header />
+  <Principles />
+  <TechnicalStandards client:load />
+  <BestPractices />
+  <Benefits />
+  <Contact />
+</Layout>

@@ -1,0 +1,43 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+type Principle = { title: string; description: string };
+
+const {
+  principles = [
+    { title: 'Honesty & Transparency', description: 'Clear, accurate information with no hidden assumptions.' },
+    { title: 'Professional Competence', description: 'Maintain training, licensing, and product knowledge.' },
+    { title: "Client's Best Interest", description: 'Recommendations aligned with client goals and risk profile.' },
+    { title: 'Avoid Conflicts of Interest', description: 'Disclose compensation and mitigate conflicts.' },
+  ] as Principle[],
+} = Astro.props;
+---
+
+<section class="w-full bg-white">
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="mb-6 text-2xl font-semibold text-slate-900">Core Ethical Principles</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        principles.map((p: Principle) => (
+          <Card key={p.title} className="h-full">
+            <CardHeader className="flex flex-row items-center gap-2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke="currentColor"
+                class="h-5 w-5 text-slate-700"
+              >
+                <path d="M20 7l-8 10-5-5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <CardTitle className="text-base font-bold text-white">{p.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p class="text-sm text-white">{p.description}</p>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>
