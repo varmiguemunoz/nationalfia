@@ -10,7 +10,7 @@ export default defineType({
       name: 'fullname',
       title: 'FullName',
       type: 'string',
-      validation: (rule) => rule.required().min(10).max(100).error('The full name is too long or too short'),
+      validation: (rule) => rule.required().min(2).max(100).error('The full name is too long or too short'),
     }),
     defineField({
       name: 'slug',
@@ -55,13 +55,13 @@ export default defineType({
       name: 'email',
       title: 'Email',
       type: 'string',
-      validation: (rule) => rule.required().min(10).max(100).error('The email is too long or too short'),
+      validation: (rule) => rule.required().min(5).max(100).error('The email is too long or too short'),
     }),
     defineField({
       name: 'phone',
       title: 'Phone',
       type: 'string',
-      validation: (rule) => rule.required().min(10).max(100).error('The phone is too long or too short'),
+      validation: (rule) => rule.required().min(5).max(100).error('The phone is too long or too short'),
     }),
     defineField({
       name: 'license',
@@ -84,18 +84,15 @@ export default defineType({
           .custom((value) => {
             if (!value) return 'This field is required';
 
-            if (!value.includes(',')) {
-              return 'Enter multiple states separated by commas (e.g. "ohio,california")';
-            }
-
             const states = value.split(',').map((s) => s.trim());
+
             if (states.some((s) => s.length === 0)) {
               return 'Each state must be a non-empty string';
             }
 
-            return true; // válido
+            return true;
           })
-          .min(5)
+          .min(1)
           .max(100),
     }),
 
