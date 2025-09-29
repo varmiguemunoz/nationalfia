@@ -9,7 +9,7 @@ import Contact from '@components/agents/Contact.astro';
 import { getAllAgents, getAgent } from '@utils/sanity';
 import type { InferGetStaticParamsType } from 'astro';
 
-export const prerender = true;
+export const prerender = false;
 
 export async function getStaticPaths() {
   const agents = await getAllAgents();
