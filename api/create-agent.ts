@@ -15,6 +15,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const file = await fetch(req.body.headshotUrl).then((res) => res.arrayBuffer());
+
+  const asset = await sanityClient.assets.upload('image', Buffer.from(file), {
+    filename: 'headshot.jpg',
+  });
+
   try {
     const { fullname, scheduleurl, email, phone, license, npn, license_states, bio, headshotUrl } = req.body;
 
@@ -43,7 +49,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             _type: 'image',
             asset: {
               _type: 'reference',
-              _ref: headshotUrl,
+              _ref: asset._id,
             },
           }
         : undefined,
