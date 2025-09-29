@@ -1,0 +1,41 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CheckCircle } from 'lucide-react';
+
+const rights = [
+  'Right to clear disclosure',
+  'Right to suitable recommendations',
+  'Right to fair treatment & resolution',
+  'Right to data privacy & security',
+];
+---
+
+<section class="w-full bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <h2 class="mb-8 text-3xl font-bold text-gray-800">Your Rights as a Consumer</h2>
+    <div class="grid gap-8 md:grid-cols-2">
+      <div>
+        <p class="text-lg leading-relaxed text-gray-600">
+          As a consumer of insurance products, you have fundamental rights that protect your interests and ensure fair
+          treatment. These rights are designed to give you transparency, choice, and recourse when dealing with
+          insurance professionals.
+        </p>
+      </div>
+      <Card className="rounded-xl border border-gray-200 shadow-sm">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-white">Consumer Rights Checklist</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {
+            rights.map((right) => (
+              <div class="flex items-center gap-3">
+                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                <span class="text-white/80">{right}</span>
+              </div>
+            ))
+          }
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>

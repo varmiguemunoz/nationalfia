@@ -1,7 +1,28 @@
 ---
-
+import Layout from '@layouts/Layout.astro';
+import Contact from '@/components/Contact.astro';
+import CommonRisks from '@/components/consumer/CommonRisks.astro';
+import YourRights from '@/components/consumer/YourRights.astro';
+import RegulatoryProtections from '@/components/consumer/RegulatoryProtections.astro';
+import NFIACommitment from '@/components/consumer/NFIACommitment.astro';
 ---
 
-<div>
-  <h1>Consumer Protection</h1>
-</div>
+<Layout title="Consumer Protection | NFIA">
+  <section class="w-full bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="mx-auto max-w-7xl px-6 py-20">
+      <div class="text-center">
+        <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">Consumer Protection in IUL Insurance</h1>
+        <p class="mx-auto max-w-3xl text-lg leading-relaxed text-gray-600">
+          Your rights, protections, and resources to ensure you receive fair treatment and make informed decisions about
+          Indexed Universal Life insurance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CommonRisks />
+  <YourRights />
+  <RegulatoryProtections />
+  <NFIACommitment />
+  <Contact />
+</Layout>

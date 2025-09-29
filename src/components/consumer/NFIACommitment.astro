@@ -1,0 +1,48 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { UserCheck, Shield, BookOpen, MessageSquare } from 'lucide-react';
+
+const commitments = [
+  {
+    icon: UserCheck,
+    title: 'Agent Verification & Certification',
+    description: 'All NFIA agents undergo rigorous background checks and maintain current licensing requirements.',
+  },
+  {
+    icon: Shield,
+    title: 'Code of Conduct & Oversight',
+    description: 'Strict ethical standards and ongoing monitoring to ensure compliance with industry best practices.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Education & Transparency',
+    description: 'Continuous training programs and clear communication about products, risks, and benefits.',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Complaint Escalation & Mediation',
+    description: 'Dedicated process for addressing concerns and resolving disputes fairly and promptly.',
+  },
+];
+---
+
+<section class="w-full bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <h2 class="mb-12 text-3xl font-bold text-gray-800">NFIA Commitment to Consumer Protection</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        commitments.map((commitment) => (
+          <Card className="rounded-xl shadow-sm border border-gray-200 h-full">
+            <CardHeader className="flex flex-col items-center text-center pb-4">
+              <commitment.icon className="h-8 w-8 text-blue-600 mb-3" />
+              <CardTitle className="text-lg font-semibold text-white">{commitment.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0 text-center">
+              <p class="text-sm text-white/80">{commitment.description}</p>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

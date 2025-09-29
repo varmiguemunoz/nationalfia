@@ -1,0 +1,43 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Shield, Lock, FileText } from 'lucide-react';
+
+const protections = [
+  {
+    icon: FileText,
+    title: '12 CFR Part 343',
+    description: 'Required disclosures (not FDIC insured, risk of value loss)',
+  },
+  {
+    icon: Lock,
+    title: 'State Privacy Laws',
+    description: 'Protect personal data and security standards',
+  },
+  {
+    icon: Shield,
+    title: 'No Tying Rule',
+    description: "Insurance can't be required for loans or credit",
+  },
+];
+---
+
+<section class="w-full bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <h2 class="mb-12 text-3xl font-bold text-white">Regulatory Protections</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        protections.map((protection) => (
+          <Card className="rounded-xl shadow-sm border border-gray-700 bg-gray-800">
+            <CardHeader className="flex flex-row items-center gap-3 pb-3">
+              <protection.icon className="h-6 w-6 text-blue-400" />
+              <CardTitle className="text-lg font-semibold text-white">{protection.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p class="text-sm text-gray-300">{protection.description}</p>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

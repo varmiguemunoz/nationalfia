@@ -5,11 +5,19 @@ import TechnicalStandards from '@/components/professional/TechnicalStandards.ast
 import BestPractices from '@/components/professional/BestPractices.astro';
 import Benefits from '@/components/professional/Benefits.astro';
 import Contact from '@/components/Contact.astro';
-import Header from '@/components/Header.astro';
 ---
 
 <Layout title="Professional Standards & Ethics | NFIA">
-  <Header />
+  <section class="w-full bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="mx-auto max-w-7xl px-6 py-20">
+      <div class="text-center">
+        <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">Professional Standards & Ethics</h1>
+        <p class="mx-auto max-w-3xl text-lg leading-relaxed text-gray-600">
+          Professional standards and ethics for insurance agents.
+        </p>
+      </div>
+    </div>
+  </section>
   <Principles />
   <TechnicalStandards client:load />
   <BestPractices />
