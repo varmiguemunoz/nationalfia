@@ -137,10 +137,10 @@ async function searchAgents({
 }) {
   const query = groq`
     *[_type == "agent" 
-      && ($firstName == null || fullname match $firstName)
-      && ($lastName == null || fullname match $lastName)
-      && ($npn == null || npn == $npn)
-      && ($license == null || license == $license)
+        && (!defined($firstName) || fullname match $firstName)
+        && (!defined($lastName) || fullname match $lastName)
+        && (!defined($npn) || npn == $npn)
+        && (!defined($license) || license == $license)
     ] {
       _id,
       "slug": slug.current,
@@ -159,6 +159,7 @@ async function searchAgents({
   `;
 
   return sanityClient.fetch(query, {
+    firstName: firstName ? `*${firstName}*` : null,
     lastName: lastName ? `*${lastName}*` : null,
     npn: npn ?? null,
     license: license ?? null,

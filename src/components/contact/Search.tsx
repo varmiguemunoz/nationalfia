@@ -29,6 +29,7 @@ export default function Search() {
   });
 
   async function onSubmit(values: ContactSchema) {
+    console.log(values);
     const results = await searchAgents({
       firstName: values.firstName || null,
       lastName: values.lastName || null,
@@ -52,7 +53,7 @@ export default function Search() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-md bg-transparent">
+    <div className="mx-auto h-auto w-full max-w-2xl overflow-hidden rounded-md bg-transparent">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
