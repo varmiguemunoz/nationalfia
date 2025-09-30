@@ -10,6 +10,7 @@ import { Button } from '../ui/button';
 
 const contactSchema = z.object({
   lastName: z.string().optional().nullable(),
+  firstName: z.string().optional().nullable(),
   npn: z.string().optional().nullable(),
   license: z.string().optional().nullable(),
 });
@@ -20,6 +21,7 @@ export default function Search() {
   const form = useForm<ContactSchema>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
+      firstName: null,
       npn: null,
       license: null,
       lastName: null,
@@ -28,13 +30,22 @@ export default function Search() {
 
   async function onSubmit(values: ContactSchema) {
     const results = await searchAgents({
+      firstName: values.firstName || null,
       lastName: values.lastName || null,
       npn: values.npn || null,
       license: values.license || null,
     });
 
     if (results.length > 0) {
-      navigate(`/agent/${results[0].slug}`);
+      if (results.length > 1) {
+        if (values.lastName) {
+          alert('Multiple results found. Please enter the agents First Name as well.');
+        } else {
+          alert('Multiple results found. Please enter more information.');
+        }
+      } else {
+        navigate(`/agent/${results[0].slug}`);
+      }
     } else {
       alert('No results found');
     }
@@ -46,6 +57,24 @@ export default function Search() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-black">First Name</FormLabel>
+                <FormControl>
+                  <Input
+                    className="text-black"
+                    placeholder="Agent First Name Here"
+                    {...field}
+                    value={field.value || ''}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="lastName"
             render={({ field }) => (
               <FormItem>
@@ -53,7 +82,7 @@ export default function Search() {
                 <FormControl>
                   <Input
                     className="text-black"
-                    placeholder="Agent Lastname Here"
+                    placeholder="Agent Last Name Here"
                     {...field}
                     value={field.value || ''}
                   />

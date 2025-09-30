@@ -125,16 +125,19 @@ async function getAllAgents() {
 }
 
 async function searchAgents({
+  firstName,
   lastName,
   npn,
   license,
 }: {
+  firstName?: string | null;
   lastName?: string | null;
   npn?: string | null;
   license?: string | null;
 }) {
   const query = groq`
     *[_type == "agent" 
+      && ($firstName == null || fullname match $firstName)
       && ($lastName == null || fullname match $lastName)
       && ($npn == null || npn == $npn)
       && ($license == null || license == $license)
