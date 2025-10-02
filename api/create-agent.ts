@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const referenceNumber = `NAFIV${String(count + 1).padStart(2, '0')}`;
 
   try {
-    const { fullname, scheduleurl, email, phone, license, npn, license_states, bio, headshotUrl } = req.body;
+    const { fullname, scheduleurl, email, phone, npn, license_states, bio, headshotUrl } = req.body;
 
     const newAgent = await sanityClient.create({
       _type: 'agent',

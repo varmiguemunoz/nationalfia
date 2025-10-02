@@ -12,13 +12,7 @@ export function getFooterSections(): FooterSection[] {
     },
     {
       title: 'Resources',
-      items: [
-        { label: 'Professional Standards', href: '/resources/professional-standards' },
-        {
-          label: 'Blog',
-          href: '/blog',
-        },
-      ],
+      items: [{ label: 'Professional Standards', href: '/resources/professional-standards' }],
     },
     {
       title: 'Legal',
