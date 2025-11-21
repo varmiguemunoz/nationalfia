@@ -50,13 +50,68 @@ import '@styles/global.css';
     <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
     <!-- twitter-description -->
     <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
-    <!-- og-image -->
-    <!-- <meta property="og:image" content={ogImage} /> -->
-    <!-- twitter-image -->
+
+    <meta property="og:image" content={config.author.avatar} />
+
     <meta name="twitter:image" content={config.author.avatar} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <ViewTransitions />
+
+    <script type="application/ld+json">
+        {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "National FIA",
+        "url": "https://www.nationalfia.org/",
+        "logo": "https://www.nationalfia.org/logo.webp",
+        "description": "National FIA provides consumer protection resources, professional standards, educational materials, and services to support financial integrity and industry best practices.",
+        "sameAs": [
+          "https://www.nationalfia.org/",
+          "https://www.nationalfia.org/blog/",
+          "https://www.nationalfia.org/contact/",
+          "https://www.nationalfia.org/resources/professional-standards/",
+          "https://www.nationalfia.org/services/consumer-protection/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://www.nationalfia.org/contact/"
+        },
+        "hasPart": [
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/blog/",
+            "name": "Blog"
+          },
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/contact/",
+            "name": "Contact"
+          },
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/resources/professional-standards/",
+            "name": "Professional Standards"
+          },
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/services/consumer-protection/",
+            "name": "Consumer Protection Services"
+          },
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/legal/privacy-policy/",
+            "name": "Privacy Policy"
+          },
+          {
+            "@type": "WebPage",
+            "url": "https://www.nationalfia.org/legal/terms-and-conditions/",
+            "name": "Terms and Conditions"
+          }
+        ]
+      })}
+    </script>
   </head>
   <body>
     <Navbar />
